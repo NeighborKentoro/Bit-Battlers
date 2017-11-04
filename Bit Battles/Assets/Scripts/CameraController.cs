@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
+	/* The in-game UI canvas for the camera */
+	[Tooltip("The in-game UI canvas for the camera.")]
+	public GameObject canvasInGame;
+
+	/* A cached copy of the camera transform */
+	Transform tform;
+
 	/* The target to follow */
 	[Tooltip("The transform that the camera will follow.")]
 	public Transform target;
@@ -26,7 +33,7 @@ public class CameraController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		tform = transform;
 	}
 
 	// Update is called once per frame
@@ -36,10 +43,30 @@ public class CameraController : MonoBehaviour {
 
 	//update the camera after everything else has happened
 	void LateUpdate() {
+		float xPos = target.position.x;
+		float yPos = target.position.y;
 
+		if (xPos > xMax)
+			xPos = xMax;
+		else if (xPos < xMin)
+			xPos = xMin;
+		if (yPos > yMax)
+			yPos = yMax;
+		else if (yPos < yMin)
+			yPos = yMin;
+
+		tform.position = new Vector3 (xPos, yPos, tform.position.z);
 	}
 
 	public void SetupInGameCamera(int playerNum, int numPlayers) {
 
+	}
+
+	public void SetupMenuCamera(int playerNum) {
+		if (playerNum > 1)
+			gameObject.SetActive (false);
+		else {
+
+		}
 	}
 }
