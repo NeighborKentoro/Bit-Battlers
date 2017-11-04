@@ -89,6 +89,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  yMax: 20
+  yMin: -20
+  xMax: 20
+  xMin: -20
 --- !u!124 &124724357394204358
 Behaviour:
   m_ObjectHideFlags: 1
