@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
+
+	/* The target to follow */
+	[Tooltip("The transform that the camera will follow.")]
+	public Transform target;
+
 	// Use this for initialization
 	void Start () {
 		
