@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdle : MonoBehaviour {
+public class PlayerAttacking : MonoBehaviour {
 
 	/* The player's controller script */
 	private PlayerController playerController;
@@ -10,7 +10,6 @@ public class PlayerIdle : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		playerController = GetComponent<PlayerController> ();
-
 	}
 	
 	// Update is called once per frame
@@ -20,18 +19,18 @@ public class PlayerIdle : MonoBehaviour {
 		if (hAxis != 0) {
 			this.enabled = false;
 			playerController.SetNextState (PlayerStates.Moving);
-		} else if (Input.GetButtonDown ("Attack")) {
+		} else if (hAxis == 0) {
 			this.enabled = false;
-			playerController.SetNextState (PlayerStates.Attacking);
+			playerController.SetNextState (PlayerStates.Idle);
 		}
 	}
 
 	void OnEnable() {
-		//play idle animation
-		Debug.Log("Idle enabled");
+		//play attacking animation
+		Debug.Log("Attacking enabled");
 	}
 
 	void OnDisable() {
-		Debug.Log ("Disabled idle");
+		Debug.Log ("Disabled attacking");
 	}
 }
