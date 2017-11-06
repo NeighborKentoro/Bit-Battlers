@@ -7,6 +7,9 @@ public enum PlayerStates { None, Idle, Moving, Attacking };
 
 public class PlayerController : MonoBehaviour {
 
+	/* The player number */
+	public int playerNum;
+
 	/* The current state of the player */
 	[Tooltip("The current state of the player.")]
 	public PlayerStates curState;
@@ -30,6 +33,9 @@ public class PlayerController : MonoBehaviour {
 	/* The player character's rigidbody2D */
 	private Rigidbody2D rBody;
 
+	/* The player character's animation controller */
+	private Animator animController;
+
 	// Use this for initialization
 	void Start () {
 		//initialize variables
@@ -37,6 +43,8 @@ public class PlayerController : MonoBehaviour {
 		idleState = GetComponent<PlayerIdle> ();
 		movingState = GetComponent<PlayerMoving> ();
 		attackingState = GetComponent<PlayerAttacking> ();
+
+		animController = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -67,6 +75,11 @@ public class PlayerController : MonoBehaviour {
 	public void SetNextState (PlayerStates newState) {
 		if(newState != PlayerStates.None)
 			nextState = newState;
+	}
+
+	/* Sets the animation based on the input */
+	public void SetAnimation () {
+		
 	}
 
 	/* Changes the linear drag to the new value "newDrag" */
