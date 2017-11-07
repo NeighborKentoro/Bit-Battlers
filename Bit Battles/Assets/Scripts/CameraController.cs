@@ -43,19 +43,21 @@ public class CameraController : MonoBehaviour {
 
 	//update the camera after everything else has happened
 	void LateUpdate() {
-		float xPos = target.position.x;
-		float yPos = target.position.y;
-
-		if (xPos > xMax)
-			xPos = xMax;
-		else if (xPos < xMin)
-			xPos = xMin;
-		if (yPos > yMax)
-			yPos = yMax;
-		else if (yPos < yMin)
-			yPos = yMin;
-
-		tform.position = new Vector3 (xPos, yPos, tform.position.z);
+		if (target != null) {
+			float xPos = target.position.x;
+			float yPos = target.position.y;
+		
+			if (xPos > xMax)
+				xPos = xMax;
+			else if (xPos < xMin)
+				xPos = xMin;
+			if (yPos > yMax)
+				yPos = yMax;
+			else if (yPos < yMin)
+				yPos = yMin;
+		
+			tform.position = new Vector3 (xPos, yPos, tform.position.z);
+		}
 	}
 
 	public void SetupInGameCamera(int playerNum, int numPlayers) {

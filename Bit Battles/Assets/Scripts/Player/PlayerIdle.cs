@@ -48,7 +48,7 @@ public class PlayerIdle : MonoBehaviour {
 		hAxis = Input.GetAxis (horizontal);
 		vAxis = Input.GetAxis (vertical);
 
-		if (hAxis != 0 || vAxis != 0) {
+		if (Mathf.Abs(hAxis) > 0.1f || Mathf.Abs(vAxis) > 0.1f) {
 			this.enabled = false;
 			playerController.SetNextState (PlayerStates.Moving);
 		} else if (Input.GetButtonDown (attack)) {

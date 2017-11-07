@@ -52,7 +52,7 @@ public class PlayerAttacking : MonoBehaviour {
 		vAxis = Input.GetAxis (vertical);
 
 		if (doneAttacking) {
-			if (hAxis != 0 || vAxis != 0) {
+			if (Mathf.Abs(hAxis) > 0.1f || Mathf.Abs(vAxis) > 0.1f) {
 				this.enabled = false;
 				playerController.SetNextState (PlayerStates.Moving);
 			} else if (Input.GetButtonDown (item)) {
@@ -61,7 +61,7 @@ public class PlayerAttacking : MonoBehaviour {
 			} else if (Input.GetButtonDown (altItem)) {
 				this.enabled = false;
 				playerController.SetNextState (PlayerStates.AltItemUse);
-			} else if (hAxis == 0 && vAxis == 0) {
+			} else if (Mathf.Abs(hAxis) < 0.1f && Mathf.Abs(vAxis) < 0.1f) {
 				this.enabled = false;
 				playerController.SetNextState (PlayerStates.Idle);
 			}
