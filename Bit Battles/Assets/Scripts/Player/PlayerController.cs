@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* The player states represented as enums */
-public enum PlayerStates { None, Idle, Moving, Attacking };
+public enum PlayerStates { None, Idle, Moving, Attacking, ItemUse, AltItemUse };
 
 public class PlayerController : MonoBehaviour {
 
@@ -11,12 +11,10 @@ public class PlayerController : MonoBehaviour {
 	public int playerNum;
 
 	/* The current state of the player */
-	[Tooltip("The current state of the player.")]
-	public PlayerStates curState;
+	private PlayerStates curState;
 
 	/* The next state of the player */
-	[Tooltip("The next state of the player.")]
-	public PlayerStates nextState;
+	private PlayerStates nextState;
 
 	#region Player State Objects
 	/* The idle state of the player */
@@ -27,6 +25,12 @@ public class PlayerController : MonoBehaviour {
 
 	/* The attacking state of the player */
 	private PlayerAttacking attackingState;
+
+	/* The item use state of the player */
+	private PlayerItemUse itemUseState;
+
+	/* The alt item use state of the player */
+	private PlayerAltItemUse altItemUseState;
 
 	#endregion
 
@@ -43,6 +47,8 @@ public class PlayerController : MonoBehaviour {
 		idleState = GetComponent<PlayerIdle> ();
 		movingState = GetComponent<PlayerMoving> ();
 		attackingState = GetComponent<PlayerAttacking> ();
+		itemUseState = GetComponent<PlayerItemUse> ();
+		altItemUseState = GetComponent<PlayerAltItemUse> ();
 
 		animController = GetComponent<Animator> ();
 	}
@@ -64,6 +70,12 @@ public class PlayerController : MonoBehaviour {
 			break;
 		case PlayerStates.Attacking:
 			attackingState.enabled = true;
+			break;
+		case PlayerStates.ItemUse:
+			itemUseState.enabled = true;
+			break;
+		case PlayerStates.AltItemUse:
+			altItemUseState.enabled = true;
 			break;
 		default:
 			break;

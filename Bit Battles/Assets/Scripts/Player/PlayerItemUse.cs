@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoving : MonoBehaviour {
+public class PlayerItemUse : MonoBehaviour {
 
 	/* The player's controller script */
 	private PlayerController playerController;
@@ -30,26 +30,28 @@ public class PlayerMoving : MonoBehaviour {
 	private string altItem;
 	#endregion
 
-	void Awake() {
+	void Awake () {
 		playerController = GetComponent<PlayerController> ();
 	}
 
 	// Use this for initialization
 	void Start () {
-		
 		horizontal = "Horizontal" + playerController.playerNum;
 		vertical = "Vertical" + playerController.playerNum;
 		attack = "Attack" + playerController.playerNum;
 		item = "Item" + playerController.playerNum;
 		altItem = "AltItem" + playerController.playerNum;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		hAxis = Input.GetAxis (horizontal);
 		vAxis = Input.GetAxis (vertical);
 
-		if (Input.GetButtonDown (attack)) {
+		if (hAxis != 0 || vAxis != 0) {
+			this.enabled = false;
+			playerController.SetNextState (PlayerStates.Moving);
+		} else if (Input.GetButtonDown (attack)) {
 			this.enabled = false;
 			playerController.SetNextState (PlayerStates.Attacking);
 		} else if (Input.GetButtonDown (item)) {
@@ -64,17 +66,13 @@ public class PlayerMoving : MonoBehaviour {
 		}
 	}
 
-	void FixedUpdate () {
-
-	}
-
 	void OnEnable() {
-		//play moving animation
+		//play item use animation
 		playerController.SetAnimation();
-		Debug.Log("Moving enabled");
+		Debug.Log("Item enabled");
 	}
 
 	void OnDisable() {
-		Debug.Log ("Disabled moving");
+		Debug.Log ("Disabled item");
 	}
 }

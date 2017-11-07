@@ -54,6 +54,12 @@ public class PlayerIdle : MonoBehaviour {
 		} else if (Input.GetButtonDown (attack)) {
 			this.enabled = false;
 			playerController.SetNextState (PlayerStates.Attacking);
+		} else if (Input.GetButtonDown (item)) {
+			this.enabled = false;
+			playerController.SetNextState (PlayerStates.ItemUse);
+		} else if (Input.GetButtonDown (altItem)) {
+			this.enabled = false;
+			playerController.SetNextState (PlayerStates.AltItemUse);
 		}
 	}
 

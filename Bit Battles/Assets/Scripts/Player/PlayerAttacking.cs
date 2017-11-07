@@ -55,6 +55,12 @@ public class PlayerAttacking : MonoBehaviour {
 			if (hAxis != 0 || vAxis != 0) {
 				this.enabled = false;
 				playerController.SetNextState (PlayerStates.Moving);
+			} else if (Input.GetButtonDown (item)) {
+				this.enabled = false;
+				playerController.SetNextState (PlayerStates.ItemUse);
+			} else if (Input.GetButtonDown (altItem)) {
+				this.enabled = false;
+				playerController.SetNextState (PlayerStates.AltItemUse);
 			} else if (hAxis == 0 && vAxis == 0) {
 				this.enabled = false;
 				playerController.SetNextState (PlayerStates.Idle);
