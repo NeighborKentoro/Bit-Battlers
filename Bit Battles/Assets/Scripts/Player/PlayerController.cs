@@ -98,4 +98,8 @@ public class PlayerController : MonoBehaviour {
 	void ChangeDrag (float newDrag) {
 		rBody.drag = newDrag;
 	}
+
+	public Rigidbody2D RBody() {
+		return rBody;
+	}
 }

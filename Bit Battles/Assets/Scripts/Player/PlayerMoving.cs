@@ -7,6 +7,9 @@ public class PlayerMoving : MonoBehaviour {
 	/* The player's controller script */
 	private PlayerController playerController;
 
+	/* The movement force */
+	public float movementForce;
+
 	/* The horizontal axis value */
 	private float hAxis;
 
@@ -65,7 +68,7 @@ public class PlayerMoving : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-
+		playerController.RBody ().AddForce (movementForce * (new Vector2 (hAxis, vAxis)));
 	}
 
 	void OnEnable() {

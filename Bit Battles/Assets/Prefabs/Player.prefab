@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114318584721686018}
   - component: {fileID: 212725873170525378}
   - component: {fileID: 95270454188595102}
+  - component: {fileID: 50790898501001176}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -47,6 +48,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50790898501001176
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746469299757704}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 20
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!95 &95270454188595102
 Animator:
   serializedVersion: 3
@@ -56,7 +77,7 @@ Animator:
   m_GameObject: {fileID: 1746469299757704}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e918da642938b4546a060b805cb43380, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -76,8 +97,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 1
-  curState: 0
-  nextState: 0
 --- !u!114 &114318584721686018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69840b07416adc54e8cc7ed495fe990f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementForce: 500
 --- !u!114 &114612214944807460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,13 +187,13 @@ SpriteRenderer:
   m_SortingLayerID: 1362600455
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8a75c2313b55afb40b03d24f0a29d31c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
